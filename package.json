@@ -1,0 +1,23 @@
+{
+  "name": "algorithm-datastructure-typescript",
+  "version": "0.1.0",
+  "description": "Typescript实现的各种基础算法与数据结构 > 参考资料：《算法第四版》",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LRCong/algorithm-dataStructure-typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LRCong/algorithm-dataStructure-typescript/issues"
+  },
+  "homepage": "https://github.com/LRCong/algorithm-dataStructure-typescript#readme",
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
