@@ -4,6 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Interface_1 = __importDefault(require("./Interface"));
+/**
+ * 实现二分查找的有序符号表
+ * 有序符号表相比无序符号表，插入时间复杂度更长（O(n) > O(1)），但查找复杂度更短（O(logn) < o(n)）
+ * 实例化时需要传入键和值的类型为泛型参数以及实现Comparator接口的比较器函数为参数
+ */
 class BinarySearchST extends Interface_1.default {
     constructor(comparator) {
         super(comparator);
@@ -62,3 +67,4 @@ class BinarySearchST extends Interface_1.default {
         }
     }
 }
+exports.default = BinarySearchST;

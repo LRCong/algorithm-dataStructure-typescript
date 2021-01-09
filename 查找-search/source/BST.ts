@@ -4,6 +4,8 @@ class Node<K, V> {
     constructor(key: K, value: V) {
         this.key = key;
         this.value = value;
+        this.left = null;
+        this.right = null;
     }
 
     public key: K;
@@ -42,7 +44,7 @@ export default class BST<K, V> extends ST<K, V> {
 
     private _get(root: Node<K, V>, key: K): void | V {
         if (root === null) {
-            return undefined;
+            return null;
         }
         let cmp = this.comparator(key, root.key)
         if (cmp === 0)
@@ -56,11 +58,41 @@ export default class BST<K, V> extends ST<K, V> {
     public get(key: K): void | V {
         return this._get(this.root, key);
     }
+
     public contains(key: K): boolean {
-        return this.get(key) !== undefined;
+        return this.get(key) !== null;
     }
+
+    private min(root: Node<K, V>): Node<K, V> {
+        if (root === null) return null;
+        if (root.left === null) return root;
+        return this.min(root.left);
+    }
+
+    private deleteMin(root: Node<K, V>): Node<K, V> {
+        if (root.left === null) return root.right;
+        root.left = this.deleteMin(root.left);
+        return root;
+    }
+
+    private _delete(root: Node<K, V>, key: K) {
+        if (root === null) return null;
+        let cmp = this.comparator(root.key, key);
+        if (cmp < 0) root.left = this._delete(root.left, key);
+        else if (cmp > 0) root.right = this._delete(root.right, key);
+        else {
+            if (root.left === null) return root.right;
+            if (root.right === null) return root.left;
+            let n = this.min(root.right);
+            n.right = this.deleteMin(root.right);
+            n.left = root.left;
+            root = n;
+        }
+        return root;
+    }
+
     public delete(key: K): void | V {
-        throw new Error('Method not implemented.');
+        this.root = this._delete(this.root, key);
     }
 
 }
