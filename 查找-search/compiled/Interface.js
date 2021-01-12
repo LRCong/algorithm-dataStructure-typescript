@@ -1,8 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class SearchTable {
+/**
+ * 搜索符号表抽象基类
+ * 定义了四个基本抽象方法：put，get，contians，delete
+ */
+export default class SearchTable {
     constructor(comparator) {
         this.comparator = comparator;
     }
 }
-exports.default = SearchTable;

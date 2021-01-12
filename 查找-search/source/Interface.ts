@@ -5,6 +5,10 @@ export interface Comparator<T> {
     (a: T, b: T): number;
 }
 
+/**
+ * 搜索符号表抽象基类
+ * 定义了四个基本抽象方法：put，get，contians，delete
+ */
 export default abstract class SearchTable<K, V> {
     constructor(comparator: Comparator<K>) {
         this.comparator = comparator;
