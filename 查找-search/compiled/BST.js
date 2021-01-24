@@ -17,7 +17,8 @@ class Node {
  */
 export default class BST extends ST {
     constructor(comparator) {
-        super(comparator);
+        super();
+        this.comparator = comparator;
         this.root = null;
     }
     _put(root, key, value) {

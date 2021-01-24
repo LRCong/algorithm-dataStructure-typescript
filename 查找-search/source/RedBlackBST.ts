@@ -30,9 +30,11 @@ class Node<K, V> {
  */
 export class ReadBLACKBST<K, V> extends ST<K, V> {
     constructor(comparator: Comparator<K>) {
-        super(comparator);
-        this.root = null;
+        super();
+        this.comparator = comparator;
     }
+
+    protected comparator: Comparator<K>;
 
     private root: Node<K, V>;
 

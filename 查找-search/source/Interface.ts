@@ -10,11 +10,6 @@ export interface Comparator<T> {
  * 定义了四个基本抽象方法：put，get，contians，delete
  */
 export default abstract class SearchTable<K, V> {
-    constructor(comparator: Comparator<K>) {
-        this.comparator = comparator;
-    }
-
-    protected comparator: Comparator<K>;
 
     public abstract put(key: K, value: V): boolean;
 

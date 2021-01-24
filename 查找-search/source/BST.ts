@@ -24,9 +24,12 @@ class Node<K, V> {
  */
 export default class BST<K, V> extends ST<K, V> {
     constructor(comparator: Comparator<K>) {
-        super(comparator);
+        super();
+        this.comparator = comparator;
         this.root = null;
     }
+
+    protected comparator: Comparator<K>;
 
     private root: Node<K, V>;
 

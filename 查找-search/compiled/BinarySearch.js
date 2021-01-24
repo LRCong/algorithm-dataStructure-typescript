@@ -6,9 +6,10 @@ import ST from './Interface';
  */
 export default class BinarySearchST extends ST {
     constructor(comparator) {
-        super(comparator);
+        super();
         this.keys = new Array();
         this.values = new Array();
+        this.comparator = comparator;
     }
     rank(key) {
         let begin = 0, end = this.keys.length;

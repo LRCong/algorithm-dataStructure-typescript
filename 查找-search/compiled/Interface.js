@@ -3,7 +3,4 @@
  * 定义了四个基本抽象方法：put，get，contians，delete
  */
 export default class SearchTable {
-    constructor(comparator) {
-        this.comparator = comparator;
-    }
 }

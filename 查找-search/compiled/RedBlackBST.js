@@ -16,10 +16,14 @@ class Node {
         this.value = value;
     }
 }
+/**
+ * 红黑树实现的查找表，任何查找复杂度不会超过logN
+ * 实现了插入和查找，删除还没有实现
+ */
 export class ReadBLACKBST extends ST {
     constructor(comparator) {
-        super(comparator);
-        this.root = null;
+        super();
+        this.comparator = comparator;
     }
     isRED(root) {
         return root != null && root.color === Colors.RED;
