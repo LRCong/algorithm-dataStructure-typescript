@@ -1,18 +1,12 @@
 import Graph, { Paths } from './Graph'
 
-/**
- * 深度优先搜索实现的寻路算法类
- * 递归实现
- * 也可以尝试利用栈的迭代实现
- */
-export default class DepethFirstPaths extends Paths {
+export default class BreadthFirstPaths extends Paths {
     constructor(G: Graph, s: number) {
         super(G, s);
         this.G = G;
         this.s = s;
-        this.edgeTo = new Array<number>(G.get_Vsum()).fill(-1);
+        this.edgeTo = new Array<number>(this.G.get_Vsum()).fill(-1);
         this.edgeTo[s] = 0;
-        this.dfs(s);
     }
 
     private G: Graph;
@@ -21,14 +15,17 @@ export default class DepethFirstPaths extends Paths {
 
     private edgeTo: Array<number>;
 
-    private dfs(v: number): void {
-        for (let w of this.G.get_adj(v)) {
-            if (this.edgeTo[w] === -1) {
-                this.edgeTo[w] = v;
-                this.dfs(v);
-            }
+    private bfs(): void {
+        let queue = new Array<number>();
+        queue.push(this.s);
+        while (queue.length > 0) {
+            let v = queue.shift();
+            for (let w of this.G.get_adj(v))
+                if (this.edgeTo[w] === -1) {
+                    queue.push(w);
+                    this.edgeTo[w] = v;
+                }
         }
-        return;
     }
 
     public hasPathTo(v: number): boolean {
@@ -37,10 +34,9 @@ export default class DepethFirstPaths extends Paths {
 
     public pathTo(v: number): number[] {
         if (!this.hasPathTo(v)) return null;
-        let ret: Array<number> = [];
+        let ret = new Array<number>();
         for (let x = v; x != this.s; x = this.edgeTo[x]) ret.unshift(x);
-        ret.push(this.s);
+        ret.unshift(this.s);
         return ret;
     }
-
 }
